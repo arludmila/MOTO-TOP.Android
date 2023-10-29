@@ -12,42 +12,34 @@ using Microsoft.JSInterop;
 using MAUIAndroidApp;
 using MAUIAndroidApp.Shared;
 using Entities.Core;
-using Contracts.Utils;
 using Newtonsoft.Json;
-using Contracts.ViewModels;
 
 namespace MAUIAndroidApp.Pages
 {
-    public partial class ProductsList
+    public partial class ClientsList
     {
-        private List<ProductViewModel> products;
+        private List<Client> clients;
         protected override async Task OnInitializedAsync()
         {
             AndroidHttpClientService httpClientService = new AndroidHttpClientService();
             HttpClient httpClient = httpClientService.GetInsecureHttpClient();
-
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/products/view-models");
-
+                HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/clients");
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    products = JsonConvert.DeserializeObject<List<ProductViewModel>>(content);
+                    clients = JsonConvert.DeserializeObject<List<Client>>(content);
                 }
                 else
                 {
-                    // Handle the error, e.g., log it or show a message to the user.
+                // Handle the error, e.g., log it or show a message to the user.
                 }
             }
             catch (Exception ex)
             {
-                // Handle the exception, e.g., log it or show a message to the user.
+            // Handle the exception, e.g., log it or show a message to the user.
             }
         }
-
-
-
-
     }
 }

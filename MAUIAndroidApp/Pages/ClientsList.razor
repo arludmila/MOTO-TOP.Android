@@ -1,0 +1,30 @@
+﻿@page "/clientslist"
+
+<h3 class="display-4 text-center my-4">Lista de Clientes</h3>
+<hr>
+@if (clients == null)
+{
+    <p class="text-muted"><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-dark">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Documento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in clients)
+            {
+                <tr>
+                    <td>@client.LastName, @client.FirstName</td>
+                    <td>@client.DocumentType: @client.DocumentNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+

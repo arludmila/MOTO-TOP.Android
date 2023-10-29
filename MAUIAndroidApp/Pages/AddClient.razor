@@ -1,6 +1,96 @@
 ﻿@page "/addclient"
-<h3>Agregar Cliente</h3>
+<style>
+    /* Add custom styles here, if needed */
+    .form-container {
+        position: relative;
+        overflow: hidden;
+        height: auto;
+        padding-bottom: 60px; /* Adjust as needed to prevent the last input from being hidden */
+    }
 
-@code {
+    .form-content {
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+    }
 
-}
+        .form-content.shift-up {
+            transform: translateY(-200px); /* Adjust the value to move the form up enough to be visible */
+        }
+</style>
+<h3 class="display-4 text-center my-4">Agregar Cliente</h3>
+<hr>
+<div class="container">
+    <div class="form-container">
+        <form class="form-content" @onsubmit="CreateClient">
+    <div class="form-group">
+        <label for="firstName">Nombre</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Nombre" @bind="firstName" />
+    </div>
+    <div class="form-group">
+        <label for="lastName">Apellido</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Apellido" @bind="lastName" />
+    </div>
+    <div class="form-group">
+        <label for="province">Provincia</label>
+                <select class="form-control" id="province" name="province" @onchange="ProvinceChanged">
+    <option value="Corrientes">Corrientes</option>
+    <option value="Chaco">Chaco</option>
+    <option value="Misiones">Misiones</option>
+</select>
+
+    </div>
+    <div class="form-group">
+        <label for="city">Ciudad</label>
+                <select class="form-control" id="city" name="city" @bind="city">
+            @foreach (var city in cities)
+            {
+                <option value="@city">@city</option>
+            }
+        </select>
+    </div>
+            <div class="form-group">
+                <label for="address">Dirección</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Dirección" @bind="address" />
+            </div>
+    <div class="form-group">
+        <label for="phoneNumber">Número de Teléfono</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Número de Teléfono" @bind="phoneNumber" />
+    </div>
+    <div class="form-group">
+        <label for="documentType">Tipo de Documento</label>
+                <select class="form-control" id="documentType" name="documentType" @onchange="DocTypeChanged">
+            <option value="0">DNI</option>
+            <option value="1">CUIT</option>
+            <option value="2">CUIL</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="documentNumber">Número de Documento</label>
+                <input type="text" class="form-control" id="documentNumber" name="documentNumber" placeholder="Número de Documento" @bind="documentNumber" />
+    </div>
+    <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" @bind="email" />
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Agregar</button>
+        </form>
+    </div>
+</div>
+<script>
+    // JavaScript to handle the form shift when an input is focused
+    const inputs = document.querySelectorAll('input');
+
+    inputs.forEach((input) => {
+        input.addEventListener('focus', () => {
+            const formContent = document.querySelector('.form-content');
+            formContent.classList.add('shift-up');
+        });
+
+        input.addEventListener('blur', () => {
+            const formContent = document.querySelector('.form-content');
+            formContent.classList.remove('shift-up');
+        });
+    });
+</script>
+

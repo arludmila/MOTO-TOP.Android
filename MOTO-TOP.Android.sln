@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAUIAndroidApp", "MAUIAndroidApp\MAUIAndroidApp.csproj", "{B2FFE472-A840-4882-BD32-51BDEAA99BF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "..\MOTO-TOP\Contracts\Contracts.csproj", "{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "..\MOTO-TOP\Entities\Entities.csproj", "{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6D282A6-D9F3-489D-9FD3-1EB62484D628}
+	EndGlobalSection
+EndGlobal

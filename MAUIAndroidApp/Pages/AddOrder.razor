@@ -4,7 +4,7 @@
 
 <div class="form-group">
     <label for="clientId">Cliente</label>
-    <select class="form-control" id="clientId" name="clientId">
+    <select class="form-control" id="clientId" name="clientId" @bind="clientId">
         @if (clients != null)
         {
             @foreach (var client in clients)
@@ -20,7 +20,7 @@
 
 <div class="form-group">
     <label for="productId">Producto</label>
-    <select class="form-control" id="productId" name="productId">
+    <select class="form-control" id="productId" name="productId" @bind="selectedProductId">
         @if (products != null)
         {
             @foreach (var product in products)
@@ -29,16 +29,43 @@
             }
         }
     </select>
-    <h6 class="text-muted" id="selectedProdDescription"></h6>
-    <h6 class="text-muted" id="selectedProdPrice"></h6>
-    <h6 class="text-muted" id="selectedProdStock"></h6>
+    <h6 class="text-muted" id="selectedProdDescription">@selectedProductDescription</h6>
+    <h6 class="text-muted" id="selectedProdPrice">@selectedProductPrice</h6>
+    <h6 class="text-muted" id="selectedProdStock">@selectedProductStock</h6>
 </div>
+
 <div class="form-group">
     <label for="productQuantity">Cantidad</label>
-    <input type="number" class="form-control" id="productQuantity" name="productQuantity" placeholder="Cantidad" />
+    <input type="number" class="form-control" id="productQuantity" @bind="selectedProductQuantity" placeholder="Cantidad" />
 </div>
-<button type="button" class="btn btn-primary mt-4">Agregar linea de detalle</button>
+
+<button type="button" class="btn btn-primary mt-4" @onclick="AddLine">Agregar linea de detalle</button>
 <hr>
+
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in orderLines)
+        {
+            <tr>
+                <td>@line.ProductId</td>
+                <td>@line.Quantity</td>
+                <td>$@line.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary mt-4" @onclick="CreateDetailedOrder">Realizar Pedido</button>
+
+
+
+
 <script>
     // Add an event listener to the select element
     document.getElementById("productId").addEventListener("change", function () {

@@ -14,6 +14,9 @@ using MAUIAndroidApp.Shared;
 using Entities.Core;
 using Newtonsoft.Json;
 using Contracts.ViewModels;
+using Contracts.DTOs.Relationships;
+using Contracts.DTOs.Entities;
+using System.Text;
 
 namespace MAUIAndroidApp.Pages
 {
@@ -21,6 +24,8 @@ namespace MAUIAndroidApp.Pages
     {
         private List<Client> clients;
         private List<ProductViewModel> products;
+
+        private int clientId;
         protected async Task GetProducts()
         {
             AndroidHttpClientService httpClientService = new AndroidHttpClientService();
@@ -71,6 +76,77 @@ namespace MAUIAndroidApp.Pages
             {
             // Handle the exception, e.g., log it or show a message to the user.
             }
+        }
+        private int selectedProductId;
+        private string selectedProductDescription;
+        private decimal selectedProductPrice;
+        private int selectedProductStock;
+        private int selectedProductQuantity;
+
+        private List<OrderProductDto> orderLines = new List<OrderProductDto>();
+
+        private void AddLine()
+        {
+            var selectedProduct = products.FirstOrDefault(p => p.Id == selectedProductId);
+
+            if (selectedProduct != null && selectedProductQuantity > 0)
+            {
+                orderLines.Add(new OrderProductDto
+                {
+                    ProductId = selectedProduct.Id,
+                    Quantity = selectedProductQuantity,
+                    Price = selectedProduct.SellingPrice
+                });
+
+                // Clear the selected product and quantity
+                selectedProductId = 0;
+                selectedProductDescription = "";
+                selectedProductPrice = 0;
+                selectedProductStock = 0;
+                selectedProductQuantity = 0;
+            }
+        }
+        // 
+        private async Task CreateDetailedOrder()
+        {
+            Random random = new Random();
+            var detailedOrderDto = new OrderWithDetailsDto()
+            {
+                ClientId = clientId,
+                // TODO: ARREGLAR ACA --> ESTO ES PORQUE EL LOGIN DEBERIA DARME EL ID DEL SELLER LOGEADO!!!
+                SellerId = random.Next(1, 9),
+                OrderDetails = orderLines
+                
+            };
+            string clientDtoJson = JsonConvert.SerializeObject(detailedOrderDto);
+            AndroidHttpClientService httpClientService = new AndroidHttpClientService();
+            HttpClient httpClient = httpClientService.GetInsecureHttpClient();
+
+            using (httpClient)
+            {
+                // Set the base address of your API
+                httpClient.BaseAddress = new Uri("https://10.0.2.2:7215/api/orders/detailed");
+
+                // Specify the endpoint for adding clients
+
+
+                // Set the content type and content
+                var content = new StringContent(clientDtoJson, Encoding.UTF8, "application/json");
+
+                // Send the POST request
+                var response = await httpClient.PostAsync(httpClient.BaseAddress, content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    // TODO: hacer una vista de las orders del seller, y redireccionar ahi!!!
+                    // NavManager.NavigateTo("/clientslist");
+                }
+                else
+                {
+                    // Handle the error, e.g., log it or show an error message.
+                }
+            }
+
         }
     }
 }

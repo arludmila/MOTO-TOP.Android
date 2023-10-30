@@ -1,6 +1,57 @@
 ﻿@page "/addorder"
-<h3 class="display-4 text-center my-4">Agregar Pedido</h3>
+<h3 class="display-4 text-center">Realizar Pedido</h3>
 <hr>
-@code {
 
-}
+<div class="form-group">
+    <label for="clientId">Cliente</label>
+    <select class="form-control" id="clientId" name="clientId">
+        @if (clients != null)
+        {
+            @foreach (var client in clients)
+            {
+                <option value="@client.Id">@client.LastName, @client.FirstName</option>
+            }
+        }
+    </select>
+</div>
+
+<hr class="mt-4">
+
+
+<div class="form-group">
+    <label for="productId">Producto</label>
+    <select class="form-control" id="productId" name="productId">
+        @if (products != null)
+        {
+            @foreach (var product in products)
+            {
+                <option value="@product.Id" data-description="@product.Description" data-price="@product.SellingPrice" data-stock="@product.Quantity">@product.CategoryName, @product.Name</option>
+            }
+        }
+    </select>
+    <h6 class="text-muted" id="selectedProdDescription"></h6>
+    <h6 class="text-muted" id="selectedProdPrice"></h6>
+    <h6 class="text-muted" id="selectedProdStock"></h6>
+</div>
+<div class="form-group">
+    <label for="productQuantity">Cantidad</label>
+    <input type="number" class="form-control" id="productQuantity" name="productQuantity" placeholder="Cantidad" />
+</div>
+<button type="button" class="btn btn-primary mt-4">Agregar linea de detalle</button>
+<hr>
+<script>
+    // Add an event listener to the select element
+    document.getElementById("productId").addEventListener("change", function () {
+        // Get the selected option
+        var selectedOption = this.options[this.selectedIndex];
+
+        // Get the additional data from the data-* attributes
+        var description = selectedOption.getAttribute("data-description");
+        var price = selectedOption.getAttribute("data-price");
+        var stock = selectedOption.getAttribute("data-stock");
+        // Display the data in the designated elements
+        document.getElementById("selectedProdDescription").textContent = "Descripción: " + description;
+        document.getElementById("selectedProdPrice").textContent = "Precio: $" + price;
+        document.getElementById("selectedProdStock").textContent = "Stock: " + stock;
+    });
+</script>

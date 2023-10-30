@@ -15,6 +15,7 @@ using Contracts.DTOs.Entities;
 using Entities.Enums;
 using System.Text;
 using Newtonsoft.Json;
+using Microsoft.Maui.Controls;
 
 namespace MAUIAndroidApp.Pages
 {
@@ -38,7 +39,21 @@ namespace MAUIAndroidApp.Pages
         }
         private void DocTypeChanged(ChangeEventArgs e)
         {
-            documentType =  (PersonDocType)e.Value;
+            switch (e.Value)
+            {
+                case "0":
+                    documentType = PersonDocType.DNI;
+                    break;
+                case "1":
+                    documentType = PersonDocType.CUIT;
+                    break;
+                case "2":
+                    documentType = PersonDocType.DNI;
+                    break;
+                default:
+                    break;
+            }
+            
         }
         private List<string> GetCitiesForProvince(string province)
         {
@@ -105,7 +120,10 @@ namespace MAUIAndroidApp.Pages
                 Email = email,
             };
             string clientDtoJson = JsonConvert.SerializeObject(clientDto);
-            using (var httpClient = new HttpClient())
+            AndroidHttpClientService httpClientService = new AndroidHttpClientService();
+            HttpClient httpClient = httpClientService.GetInsecureHttpClient();
+
+            using (httpClient)
             {
                 // Set the base address of your API
                 httpClient.BaseAddress = new Uri("https://10.0.2.2:7215/api/clients");
@@ -121,7 +139,8 @@ namespace MAUIAndroidApp.Pages
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // Handle success, e.g., show a success message or redirect
+                    
+                    NavManager.NavigateTo("/clientslist");
                 }
                 else
                 {

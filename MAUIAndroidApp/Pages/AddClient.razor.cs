@@ -108,7 +108,7 @@ namespace MAUIAndroidApp.Pages
             }
         }
         private async Task CreateClient()
-        {
+                                            {
             var clientDto = new ClientDto()
             {
                 FirstName = firstName, 

@@ -115,8 +115,8 @@ namespace MAUIAndroidApp.Pages
                 ClientId = clientId,
                 // TODO: ARREGLAR ACA --> ESTO ES PORQUE EL LOGIN DEBERIA DARME EL ID DEL SELLER LOGEADO!!!
                 SellerId = random.Next(1, 9),
-                OrderDetails = orderLines
-                
+                OrderDetails = orderLines,
+                Date = DateTime.Now,
             };
             string clientDtoJson = JsonConvert.SerializeObject(detailedOrderDto);
             AndroidHttpClientService httpClientService = new AndroidHttpClientService();
@@ -128,7 +128,6 @@ namespace MAUIAndroidApp.Pages
                 httpClient.BaseAddress = new Uri("https://10.0.2.2:7215/api/orders/detailed");
 
                 // Specify the endpoint for adding clients
-
 
                 // Set the content type and content
                 var content = new StringContent(clientDtoJson, Encoding.UTF8, "application/json");

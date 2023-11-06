@@ -95,7 +95,8 @@ namespace MAUIAndroidApp.Pages
                 {
                     ProductId = selectedProduct.Id,
                     Quantity = selectedProductQuantity,
-                    Price = selectedProduct.SellingPrice
+                    Price = selectedProduct.SellingPrice,
+
                 });
 
                 // Clear the selected product and quantity
@@ -116,8 +117,9 @@ namespace MAUIAndroidApp.Pages
                 // TODO: ARREGLAR ACA --> ESTO ES PORQUE EL LOGIN DEBERIA DARME EL ID DEL SELLER LOGEADO!!!
                // SellerId = random.Next(1, 9),
                SellerId = AppData.SellerId,
-                OrderDetails = orderLines
-                
+                OrderDetails = orderLines,
+              Date = DateTime.Now,
+
             };
             string clientDtoJson = JsonConvert.SerializeObject(detailedOrderDto);
             AndroidHttpClientService httpClientService = new AndroidHttpClientService();

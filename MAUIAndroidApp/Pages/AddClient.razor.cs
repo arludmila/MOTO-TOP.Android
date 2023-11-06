@@ -64,11 +64,11 @@ namespace MAUIAndroidApp.Pages
                     "Corrientes",
                     "Goya",
                     "Mercedes",
-                    "Curuzú Cuatiá",
+                    "Curuzï¿½ Cuatiï¿½",
                     "Esquina",
-                    "Ituzaingó",
+                    "Ituzaingï¿½",
                     "Paso de los Libres",
-                    "Santo Tomé",
+                    "Santo Tomï¿½",
                     "Monte Caseros",
                     "Bella Vista"
                 };
@@ -78,11 +78,11 @@ namespace MAUIAndroidApp.Pages
                 return new List<string>
                 {
                     "Resistencia",
-                    "Roque Sáenz Peña",
-                    "Villa Ángela",
+                    "Roque Sï¿½enz Peï¿½a",
+                    "Villa ï¿½ngela",
                     "Charata",
-                    "Juan José Castelli",
-                    "General José de San Martín",
+                    "Juan Josï¿½ Castelli",
+                    "General Josï¿½ de San Martï¿½n",
                     "Barranqueras"
                 };
             }
@@ -91,15 +91,15 @@ namespace MAUIAndroidApp.Pages
                 return new List<string>
                 {
                     "Posadas",
-                    "Puerto Iguazú",
+                    "Puerto Iguazï¿½",
                     "Eldorado",
-                    "Oberá",
+                    "Oberï¿½",
                     "Apostoles",
                     "San Vicente",
-                    "Garupá",
+                    "Garupï¿½",
                     "Montecarlo",
                     "Alem",
-                    "Jardín América"
+                    "Jardï¿½n Amï¿½rica"
                 };
             }
             else

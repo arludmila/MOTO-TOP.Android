@@ -22,13 +22,14 @@ namespace MAUIAndroidApp.Pages
         private List<Client> clients;
         protected override async Task OnInitializedAsync()
         {
+      //var deb = await ApiHelper.GetListAsync<Client>($"{ApiUrl.AzureUrl}clients");
             AndroidHttpClientService httpClientService = new AndroidHttpClientService();
             HttpClient httpClient = httpClientService.GetInsecureHttpClient();
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync($"{ApiUrl.AzureUrl}clients");
+                //HttpResponseMessage response = await httpClient.GetAsync($"{ApiUrl.AzureUrl}clients");
 
-                //HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/clients");
+                HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/clients");
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();

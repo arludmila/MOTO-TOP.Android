@@ -13,6 +13,7 @@ using MAUIAndroidApp;
 using MAUIAndroidApp.Shared;
 using Entities.Core;
 using Newtonsoft.Json;
+using Contracts.Utils;
 
 namespace MAUIAndroidApp.Pages
 {
@@ -25,7 +26,9 @@ namespace MAUIAndroidApp.Pages
             HttpClient httpClient = httpClientService.GetInsecureHttpClient();
             try
             {
-                HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/clients");
+                HttpResponseMessage response = await httpClient.GetAsync($"{ApiUrl.AzureUrl}clients");
+
+                //HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/clients");
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();

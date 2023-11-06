@@ -1,0 +1,37 @@
+@page "/"
+@layout EmptyLayout
+@inject NavigationManager NavManager
+@inject Services.AppData AppData
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h3 class="display-4 text-center">Ingresar a la aplicación</h3>
+    <hr />
+    <div class="container mt-1">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email" >Email:</label>
+                                <input @bind="email" type="email" class="form-control" id="email" placeholder="Ingrese su email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="mt-4">Contraseña:</label>
+                                <input @bind="password" type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-4" @onclick="LoginRequest">Ingresar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+

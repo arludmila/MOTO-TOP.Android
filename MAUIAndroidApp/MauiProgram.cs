@@ -1,4 +1,4 @@
-﻿using MAUIAndroidApp.Data;
+using MAUIAndroidApp.Data;
 using Microsoft.Extensions.Logging;
 
 namespace MAUIAndroidApp
@@ -16,9 +16,9 @@ namespace MAUIAndroidApp
                 });
 
             builder.Services.AddMauiBlazorWebView();
-
+           builder.Services.AddSingleton<Services.AppData>();
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+      builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 

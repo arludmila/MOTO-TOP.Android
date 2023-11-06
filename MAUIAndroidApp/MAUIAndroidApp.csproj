@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
         <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
@@ -54,8 +54,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\MOTO-TOP\Contracts\Contracts.csproj" />
-      <ProjectReference Include="..\..\MOTO-TOP\Entities\Entities.csproj" />
+     
+      <ProjectReference Include="C:\Users\ludmi\source\repos\Integrador-Sistemas\MOTO-TOP\Contracts\Contracts.csproj" />
+      <ProjectReference Include="C:\Users\ludmi\source\repos\Integrador-Sistemas\MOTO-TOP\Entities\Entities.csproj" />
     </ItemGroup>
 
 </Project>

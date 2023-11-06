@@ -5,9 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MAUIAndroidApp", "MAUIAndroidApp\MAUIAndroidApp.csproj", "{B2FFE472-A840-4882-BD32-51BDEAA99BF1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "..\MOTO-TOP\Contracts\Contracts.csproj", "{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "C:\Users\ludmi\source\repos\Integrador-Sistemas\MOTO-TOP\Contracts\Contracts.csproj", "{556BE6DB-89B7-4B37-9282-5368E6D29A56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "..\MOTO-TOP\Entities\Entities.csproj", "{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "C:\Users\ludmi\source\repos\Integrador-Sistemas\MOTO-TOP\Entities\Entities.csproj", "{959EAC3E-361E-41F4-B329-75F975CEA73D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +21,14 @@ Global
 		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2FFE472-A840-4882-BD32-51BDEAA99BF1}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BEC3D3D-C5EC-4998-B7A7-47978F869B91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AF53FDD-8A79-4209-A053-E2901E2B5ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{556BE6DB-89B7-4B37-9282-5368E6D29A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{556BE6DB-89B7-4B37-9282-5368E6D29A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{556BE6DB-89B7-4B37-9282-5368E6D29A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{556BE6DB-89B7-4B37-9282-5368E6D29A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{959EAC3E-361E-41F4-B329-75F975CEA73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959EAC3E-361E-41F4-B329-75F975CEA73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959EAC3E-361E-41F4-B329-75F975CEA73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959EAC3E-361E-41F4-B329-75F975CEA73D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

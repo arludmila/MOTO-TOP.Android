@@ -1,53 +1,56 @@
-using global::System;
-using global::System.Collections.Generic;
-using global::System.Linq;
-using global::System.Threading.Tasks;
-using global::Microsoft.AspNetCore.Components;
-using System.Net.Http;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-using Microsoft.JSInterop;
-using MAUIAndroidApp;
-using MAUIAndroidApp.Shared;
-using Entities.Core;
 using Contracts.Utils;
-using Newtonsoft.Json;
 using Contracts.ViewModels;
+using Entities.Core;
+using Newtonsoft.Json;
 
 namespace MAUIAndroidApp.Pages
 {
-    public partial class ProductsList
+  public partial class ProductsList
+  {
+    private List<ProductViewModel> products;
+    protected override async Task OnInitializedAsync()
     {
-        private List<ProductViewModel> products;
-        protected override async Task OnInitializedAsync()
-        {
-            AndroidHttpClientService httpClientService = new AndroidHttpClientService();
-            HttpClient httpClient = httpClientService.GetInsecureHttpClient();
 
-            try
-            {
-                HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/products/view-models");
+      // AZURE
+      var response = await ApiHelper.GetListAsync<ProductViewModel>($"{ApiUrl.AzureUrl}products/view-models");
+      if (response == null)
+      {
+        //TODO:
 
-                if (response.IsSuccessStatusCode)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                    products = JsonConvert.DeserializeObject<List<ProductViewModel>>(content);
-                }
-                else
-                {
-                    // Handle the error, e.g., log it or show a message to the user.
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle the exception, e.g., log it or show a message to the user.
-            }
-        }
+      }
+      else
+      {
+        products = response;
+      }
+      //
 
 
 
+      //AndroidHttpClientService httpClientService = new AndroidHttpClientService();
+      //HttpClient httpClient = httpClientService.GetInsecureHttpClient();
 
+      //try
+      //{
+      //  HttpResponseMessage response = await httpClient.GetAsync("https://10.0.2.2:7215/api/products/view-models");
+
+      //  if (response.IsSuccessStatusCode)
+      //  {
+      //    string content = await response.Content.ReadAsStringAsync();
+      //    products = JsonConvert.DeserializeObject<List<ProductViewModel>>(content);
+      //  }
+      //  else
+      //  {
+      //    // Handle the error, e.g., log it or show a message to the user.
+      //  }
+      //}
+      //catch (Exception ex)
+      //{
+      //  // Handle the exception, e.g., log it or show a message to the user.
+      //}
     }
+
+
+
+
+  }
 }

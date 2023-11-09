@@ -1,5 +1,7 @@
 @page "/addorder"
 @inject Services.AppData AppData
+@inject NavigationManager NavManager
+
 <h3 class="display-4 text-center">Realizar Pedido</h3>
 <hr>
 
@@ -46,7 +48,8 @@
 <table class="table table-dark">
     <thead class="thead-dark">
         <tr>
-            <th>Id Producto</th>
+            <th>Id</th>
+            <th>Producto</th>
             <th>Cantidad</th>
             <th>Precio</th>
         </tr>
@@ -56,12 +59,17 @@
         {
             <tr>
                 <td>@line.ProductId</td>
+                <td>@line.ProductName</td>
                 <td>@line.Quantity</td>
-                <td>$@line.Price</td>
+                <td class="justify-content-end">$@line.Price</td>
             </tr>
         }
     </tbody>
 </table>
+<div class="mt-4 justify-content-end">
+    <h4 class="justify-content-end">Total: $@orderLines.Sum(line => line.Quantity * line.Price)</h4>
+</div>
+
 <button type="button" class="btn btn-primary mt-4" @onclick="CreateDetailedOrder">Realizar Pedido</button>
 
 

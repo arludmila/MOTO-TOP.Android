@@ -10,24 +10,39 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h3 class="display-4 text-center">Ingresar a la aplicación</h3>
+    <h3 class="display-4 text-center">MOTO-TOP</h3>
     <hr />
     <div class="container mt-1">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="email" >Email:</label>
-                                <input @bind="email" type="email" class="form-control" id="email" placeholder="Ingrese su email">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="mt-4">Contraseña:</label>
-                                <input @bind="password" type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-4" @onclick="LoginRequest">Ingresar</button>
+                        <h5 class="card-title text-center">Ingresar a la aplicación</h5>
+                       
+                            <form>
+                               @if (!loadingSpinnerDisplay)
+                            {
+                                <div class="form-group">
+                                    <label for="email" class="mt-4">Email:</label>
+                                    <input @bind="email" type="email" class="form-control" id="email" placeholder="Ingrese su email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="mt-4">Contraseña:</label>
+                                    <input @bind="password" type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4" @onclick="LoginRequest">Ingresar</button>
+                            }
+                            else
+                            {
+                                <div class="text-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="sr-only">Cargando...</span>
+                                    </div>
+                                </div>
+                            }
                         </form>
+                        
+                        
                     </div>
                 </div>
             </div>

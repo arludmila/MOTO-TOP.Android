@@ -1,6 +1,7 @@
-using Android.Locations;
+
 using Contracts.DTOs;
 using Contracts.DTOs.Entities;
+using Contracts.Utils;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -10,53 +11,49 @@ namespace MAUIAndroidApp.Pages
   {
     private string email;
     private string password;
+    private bool loadingSpinnerDisplay = false;
 
     private async Task LoginRequest()
+    {
+      // Show the loading spinner
+      loadingSpinnerDisplay = true;
+      StateHasChanged();
+      await Task.Delay(10);
+
+      //
+      await SendLoginRequest();
+      loadingSpinnerDisplay = false;
+      await InvokeAsync(StateHasChanged);
+    }
+    private async Task SendLoginRequest()
     {
       var loginRequestDto = new LoginRequestDto()
       {
         Email = email,
         Password = password
       };
-      
-      string loginRequestDtoJson = JsonConvert.SerializeObject(loginRequestDto);
-      AndroidHttpClientService httpClientService = new AndroidHttpClientService();
-      HttpClient httpClient = httpClientService.GetInsecureHttpClient();
 
-      using (httpClient)
+      // AZURE
+      var response = await ApiHelper.PostAsync($"{ApiUrl.AzureUrl}login/seller", loginRequestDto);
+      if (response.Contains("error") || response.Contains("failed"))
       {
-        // Set the base address of your API
-        httpClient.BaseAddress = new Uri("https://10.0.2.2:7215/api/login/seller");
+        //TODO:
 
-        // Specify the endpoint for adding clients
-
-
-        // Set the content type and content
-        var content = new StringContent(loginRequestDtoJson, Encoding.UTF8, "application/json");
-
-        // Send the POST request
-        var response = await httpClient.PostAsync(httpClient.BaseAddress, content);
-
-        if (response.IsSuccessStatusCode)
+      }
+      else
+      {
+        var id = Convert.ToInt32(response);
+        if (id == 0)
         {
-
-          var id = Convert.ToInt32(await response.Content.ReadAsStringAsync());
-          if (id == 0)
-          {
-            return;
-          }
-          else
-          {
-            // TODO: guardar el ID en algun lugar!!!
-            AppData.SellerId = id;
-            NavManager.NavigateTo("/index");
-          }
-          
+          loadingSpinnerDisplay = false;
+          StateHasChanged();
+          return;
         }
         else
         {
-          // TODO:??????????????????????
-          throw new Exception();
+          // TODO: guardar el ID en algun lugar!!!
+          AppData.SellerId = id;
+          NavManager.NavigateTo("/index");
         }
       }
     }

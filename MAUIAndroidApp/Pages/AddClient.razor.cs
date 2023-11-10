@@ -2,8 +2,6 @@ using Contracts.DTOs.Entities;
 using Contracts.Utils;
 using Entities.Enums;
 using global::Microsoft.AspNetCore.Components;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MAUIAndroidApp.Pages
 {
@@ -50,15 +48,15 @@ namespace MAUIAndroidApp.Pages
         return new List<string>
                 {
                     "Corrientes",
-                    "Goya",
-                    "Mercedes",
-                    "Curuz� Cuati�",
-                    "Esquina",
-                    "Ituzaing�",
-                    "Paso de los Libres",
-                    "Santo Tom�",
-                    "Monte Caseros",
-                    "Bella Vista"
+        "Goya",
+        "Mercedes",
+        "Curuzú Cuatiá",
+        "Esquina",
+        "Ituzaingó",
+        "Paso de los Libres",
+        "Santo Tomé",
+        "Monte Caseros",
+        "Bella Vista"
                 };
       }
       else if (province == "Chaco")
@@ -66,12 +64,12 @@ namespace MAUIAndroidApp.Pages
         return new List<string>
                 {
                     "Resistencia",
-                    "Roque S�enz Pe�a",
-                    "Villa �ngela",
-                    "Charata",
-                    "Juan Jos� Castelli",
-                    "General Jos� de San Mart�n",
-                    "Barranqueras"
+        "Roque Sáenz Peña",
+        "Villa Ángela",
+        "Charata",
+        "Juan José Castelli",
+        "General José de San Martín",
+        "Barranqueras"
                 };
       }
       else if (province == "Misiones")
@@ -79,15 +77,15 @@ namespace MAUIAndroidApp.Pages
         return new List<string>
                 {
                     "Posadas",
-                    "Puerto Iguaz�",
-                    "Eldorado",
-                    "Ober�",
-                    "Apostoles",
-                    "San Vicente",
-                    "Garup�",
-                    "Montecarlo",
-                    "Alem",
-                    "Jard�n Am�rica"
+        "Puerto Iguazú",
+        "Eldorado",
+        "Oberá",
+        "Apostoles",
+        "San Vicente",
+        "Garupá",
+        "Montecarlo",
+        "Alem",
+        "Jardín América"
                 };
       }
       else

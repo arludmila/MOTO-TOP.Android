@@ -15,16 +15,15 @@ namespace MAUIAndroidApp.Pages
 
     private async Task LoginRequest()
     {
-      // Show the loading spinner
       loadingSpinnerDisplay = true;
       StateHasChanged();
-      await Task.Delay(10);
 
-      //
       await SendLoginRequest();
+
       loadingSpinnerDisplay = false;
-      await InvokeAsync(StateHasChanged);
+      StateHasChanged();
     }
+
     private async Task SendLoginRequest()
     {
       var loginRequestDto = new LoginRequestDto()
@@ -35,23 +34,21 @@ namespace MAUIAndroidApp.Pages
 
       // AZURE
       var response = await ApiHelper.PostAsync($"{ApiUrl.AzureUrl}login/seller", loginRequestDto);
+
       if (response.Contains("error") || response.Contains("failed"))
       {
-        //TODO:
-
+        // TODO: Handle error
       }
       else
       {
         var id = Convert.ToInt32(response);
         if (id == 0)
         {
-          loadingSpinnerDisplay = false;
-          StateHasChanged();
+          // TODO: Handle the case where login failed
           return;
         }
         else
         {
-          // TODO: guardar el ID en algun lugar!!!
           AppData.SellerId = id;
           NavManager.NavigateTo("/index");
         }

@@ -7,7 +7,7 @@
 
 <div class="form-group">
     <label for="clientId">Cliente</label>
-    <select class="form-control" id="clientId" name="clientId" @bind="clientId">
+    <select class="form-control" id="clientId" name="clientId" @bind="clientId" required>
         @if (clients != null)
         {
             @foreach (var client in clients)

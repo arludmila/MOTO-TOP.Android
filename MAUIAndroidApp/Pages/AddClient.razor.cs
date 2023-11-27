@@ -99,7 +99,7 @@ namespace MAUIAndroidApp.Pages
       {
         FirstName = firstName,
         LastName = lastName,
-        Location = $"{province}, {city}, {address}",
+        Location = $"{city}, {address}",
         PhoneNumber = phoneNumber,
         DocumentType = documentType,
         DocumentNumber = documentNumber,

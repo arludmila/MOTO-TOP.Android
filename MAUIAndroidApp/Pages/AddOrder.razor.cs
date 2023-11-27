@@ -47,11 +47,15 @@ using System.Text;
         }
         else
         {
-          clients  = response.OrderBy(c => c.LastName).ThenBy(c => c.FirstName).ToList();
-        }
+            var seller = await ApiHelper.GetAsync<Seller>($"{ApiUrl.AzureUrl}sellers/{AppData.SellerId}");
+
+            clients = response
+              .Where(c => c.Location.Contains($"{seller.Zone},"))
+              .OrderBy(c => c.LastName).ThenBy(c => c.FirstName).ToList();
+          }
         //
 
-      }
+         }
       private int selectedProductId;
       private string selectedProductDescription;
       private double selectedProductPrice;
